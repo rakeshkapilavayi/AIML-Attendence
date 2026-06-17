@@ -159,5 +159,48 @@ def style_base_layout():
                 opacity: 0.75;
                 font-size: 0.8em;
             }
+
+            /* Dialogs / modals (st.dialog) — force light background + dark text.
+               Streamlit sometimes renders these dark (theme/dark-mode), which
+               makes low-contrast text look invisible-ish. */
+            div[data-testid="stDialog"],
+            div[role="dialog"] {
+                background-color: #FAFAFE !important;
+            }
+
+            div[data-testid="stDialog"] *,
+            div[role="dialog"] * {
+                color: #1e293b !important;
+            }
+
+            div[data-testid="stDialog"] input,
+            div[role="dialog"] input,
+            div[data-testid="stDialog"] textarea,
+            div[role="dialog"] textarea {
+                background-color: #F1F1F6 !important;
+                color: #1e293b !important;
+            }
+
+            /* Buttons inside dialogs keep their colored backgrounds + white text */
+            div[data-testid="stDialog"] button,
+            div[role="dialog"] button {
+                color: white !important;
+            }
+
+            div[data-testid="stDialog"] button *,
+            div[role="dialog"] button * {
+                color: inherit !important;
+            }
+
+            /* Toasts (st.toast) — same treatment, force light background + dark text */
+            div[data-testid="stToast"] {
+                background-color: #FAFAFE !important;
+                color: #1e293b !important;
+                border-radius: 1rem !important;
+            }
+
+            div[data-testid="stToast"] * {
+                color: #1e293b !important;
+            }
         </style>         
         """, unsafe_allow_html=True)
