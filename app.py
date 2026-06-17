@@ -5,9 +5,17 @@ from src.screens.home_screen import home_screen
 from src.components.dialog_auto_enroll import auto_enroll_dialog
 
 
+def preload_fonts():
+    st.markdown("""
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    """, unsafe_allow_html=True)
+
 
 def main():
-    
+    preload_fonts()
+
     if "login_type" not in st.session_state:
         st.session_state["login_type"] = None
 

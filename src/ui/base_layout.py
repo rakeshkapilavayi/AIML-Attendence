@@ -69,13 +69,18 @@ def style_base_layout():
                 font-size: 3.5rem !important;
                 line-height: 1.1 !important;
                 margin-bottom:0rem !important;
+                letter-spacing: 0.02em !important;
+                word-spacing: 0.15em !important;
             }
+                
 
             h2 {
                 font-family: 'Climate Crisis', sans-serif !important;
                 font-size: 2rem !important;
-                line-height:0.9 !important;
+                line-height:1.2 !important;
                 margin-bottom:0rem !important;
+                letter-spacing: 0.02em !important;
+                word-spacing: 0.15em !important;
             }
                 
             h3, h4, p {
