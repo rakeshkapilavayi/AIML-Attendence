@@ -14,6 +14,7 @@ def style_background_home():
 
                 .stApp div[data-testid="stColumn"]{
                     background-color: #FAFAFE !important;
+                    color: #1e293b !important;
                     padding: 2.25rem 2rem !important;
                     border-radius: 28px !important;
                     border: none !important;
@@ -21,6 +22,10 @@ def style_background_home():
                     box-shadow: 0 24px 48px -28px rgba(15, 18, 50, 0.55) !important;
                     transition: transform 0.25s ease, box-shadow 0.25s ease !important;
                     }
+
+                .stApp div[data-testid="stColumn"] * {
+                    color: #1e293b !important;
+                }
 
                 .stApp div[data-testid="stColumn"]:hover{
                     transform: translateY(-6px) !important;
@@ -51,11 +56,15 @@ def style_background_dashboard():
 
 def style_base_layout():
 
+    # Load fonts via <link> (more reliable on deployed environments than @import)
+    st.markdown("""
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+    """, unsafe_allow_html=True)
+
     st.markdown("""
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
-            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');    
-
             #MainMenu, footer, header {
                 visibility: hidden;
             }
@@ -71,20 +80,28 @@ def style_base_layout():
                 margin-bottom:0rem !important;
                 letter-spacing: 0.02em !important;
                 word-spacing: 0.15em !important;
+                color: #1e293b;
             }
                 
 
             h2 {
                 font-family: 'Climate Crisis', sans-serif !important;
                 font-size: 2rem !important;
-                line-height:1.2 !important;
+                line-height: 1.2 !important;
                 margin-bottom:0rem !important;
                 letter-spacing: 0.02em !important;
                 word-spacing: 0.15em !important;
+                color: #1e293b;
             }
                 
-            h3, h4, p {
-                font-family: 'Outfit', sans-serif;    
+            h3, h4 {
+                font-family: 'Outfit', sans-serif;
+                color: #1e293b;
+            }
+
+            p, span, small, label, .stCaption, [data-testid="stCaptionContainer"] {
+                font-family: 'Outfit', sans-serif;
+                color: #1e293b;
             }
 
             button{
@@ -94,9 +111,33 @@ def style_base_layout():
                 padding: 10px 20px !important;
                 border: none !important;
                 transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
+                }
+
+            button[kind="secondary"]{
+                border-radius: 1.5rem !important;
+                background-color: #EB459E !important;
+                color: white !important;
+                padding: 10px 20px !important;
+                border: none !important;
+                transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
+                }
+
+            button[kind="tertiary"]{
+                border-radius: 1.5rem !important;
+                background-color: black !important;
+                color: white !important;
+                padding: 10px 20px !important;
+                border: none !important;
+                transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
+                }
+
+            button:hover{
+                transform: scale(1.05) !important;
+                box-shadow: 0 12px 24px -8px rgba(88,101,242,0.45) !important;
             }
 
-            /* THE FIX: target the inner content wrapper of the button */
+            /* Button label/icon/shortcut layout fix: keeps text, icon, and
+               keyboard-shortcut hints from overlapping inside the button */
             button > div {
                 display: flex !important;
                 align-items: center !important;
@@ -107,36 +148,16 @@ def style_base_layout():
                 white-space: nowrap !important;
             }
 
-            /* keep shortcut hint visually distinct & not overlapping */
+            button > div * {
+                color: inherit !important;
+            }
+
             button > div > span[data-testid="stIconMaterial"],
             button kbd {
                 position: static !important;
                 margin-left: 6px !important;
                 opacity: 0.75;
                 font-size: 0.8em;
-            }
-
-            button[kind="secondary"]{
-                border-radius: 1.5rem !important;
-                background-color: #EB459E !important;
-                color: white !important;
-                padding: 10px 20px !important;
-                border: none !important;
-                transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
-            }
-
-            button[kind="tertiary"]{
-                border-radius: 1.5rem !important;
-                background-color: black !important;
-                color: white !important;
-                padding: 10px 20px !important;
-                border: none !important;
-                transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
-            }
-
-            button:hover{
-                transform: scale(1.05) !important;
-                box-shadow: 0 12px 24px -8px rgba(88,101,242,0.45) !important;
             }
         </style>         
         """, unsafe_allow_html=True)
