@@ -56,7 +56,6 @@ def style_base_layout():
             @import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&display=swap');
             @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');    
 
-                 
             #MainMenu, footer, header {
                 visibility: hidden;
             }
@@ -71,7 +70,6 @@ def style_base_layout():
                 line-height: 1.1 !important;
                 margin-bottom:0rem !important;
             }
-                
 
             h2 {
                 font-family: 'Climate Crisis', sans-serif !important;
@@ -83,7 +81,6 @@ def style_base_layout():
             h3, h4, p {
                 font-family: 'Outfit', sans-serif;    
             }
-                
 
             button{
                 border-radius: 1.5rem !important;
@@ -92,7 +89,27 @@ def style_base_layout():
                 padding: 10px 20px !important;
                 border: none !important;
                 transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
-                }
+            }
+
+            /* THE FIX: target the inner content wrapper of the button */
+            button > div {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 8px !important;
+                width: 100% !important;
+                flex-wrap: nowrap !important;
+                white-space: nowrap !important;
+            }
+
+            /* keep shortcut hint visually distinct & not overlapping */
+            button > div > span[data-testid="stIconMaterial"],
+            button kbd {
+                position: static !important;
+                margin-left: 6px !important;
+                opacity: 0.75;
+                font-size: 0.8em;
+            }
 
             button[kind="secondary"]{
                 border-radius: 1.5rem !important;
@@ -101,7 +118,7 @@ def style_base_layout():
                 padding: 10px 20px !important;
                 border: none !important;
                 transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
-                }
+            }
 
             button[kind="tertiary"]{
                 border-radius: 1.5rem !important;
@@ -110,7 +127,7 @@ def style_base_layout():
                 padding: 10px 20px !important;
                 border: none !important;
                 transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out !important;
-                }
+            }
 
             button:hover{
                 transform: scale(1.05) !important;
